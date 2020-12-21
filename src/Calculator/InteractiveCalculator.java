@@ -16,9 +16,12 @@ public class InteractiveCalculator {
 		System.out.println("Give me a integer number B please:");
 		double numberB = scanner.nextInt();
 		double result = 0;
+		// prevent Division by 0
 		boolean undefinedCheck = false;
+		// boolean to make sure user spell correct operation
 		boolean boolResult;
 		String operation;
+		// Prevent println to double
 		boolean firstRun = true;
 		
 		do {
@@ -26,7 +29,7 @@ public class InteractiveCalculator {
 			boolResult = true;
 			
 			if (firstRun) {
-				System.out.println("Give me a operation please:");
+				System.out.println("Give me an operation please:");
 				scanner.nextLine();
 				firstRun = false;
 			}
@@ -50,22 +53,24 @@ public class InteractiveCalculator {
 			} else if (operation.equals("divide")) {
 				if(numberB == 0) {
 					undefinedCheck = true;
+					
 				}else {
 					DivideOperation divide = new DivideOperation();
 					divide.setA(numberA);
 					divide.setB(numberB);
 					result = divide.getResult();
+
 				}
 			} else {
-				System.out.println("Did not understand operation - Please enter exactly: add, subtract, divide, or multiply.");
+				System.out.println("Operation unknown - Please enter exactly: add, subtract, divide, or multiply.");
 				boolResult = false;
 			}
 			
-		} while (boolResult == false);
+		} while (!boolResult);
 		
 		scanner.close();
 		
-		if (undefinedCheck == false) {
+		if (!undefinedCheck) {
 			System.out.println("The result is");
 			if (result%1 == 0) {
 				System.out.println((int)result);
@@ -74,7 +79,9 @@ public class InteractiveCalculator {
 			}
 			
 		} else {
+		
 			System.out.println("The result is undefined, dividing by 0");
+			
 		}
 	}
 	

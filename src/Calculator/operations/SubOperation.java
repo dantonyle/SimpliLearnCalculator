@@ -1,8 +1,8 @@
 package Calculator.operations;
 
 public class SubOperation {
-	double a = 0;
-	double b = 0;
+	private double a = 0;
+	private double b = 0;
 	
 	public void setA(double input) {
 		this.a = input;
