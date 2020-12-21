@@ -1,18 +1,18 @@
 package Calculator.operations;
 
 public class DivideOperation {
-	int a = 0;
-	int b = 0;
+	double a = 0;
+	double b = 0;
 	
-	public void setA(int input) {
+	public void setA(double input) {
 		this.a = input;
 	}
 	
-	public void setB(int input) {
+	public void setB(double input) {
 		this.b = input;
 	}
 	
-	public int getResult() {
+	public double getResult() {
 		return this.a / this.b;
 	}
 }
