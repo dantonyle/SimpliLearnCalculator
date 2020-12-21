@@ -8,22 +8,29 @@ import java.util.Scanner;
 public class InteractiveCalculator {
 	
 	public static final void main(String[] args) {
+		@SuppressWarnings("resource")
 		Scanner scanner = new Scanner(System.in);
-		System.out.println("Give me a number A please:");
+		System.out.println("Give me a integer number A please:");
 		double numberA = scanner.nextInt();
 		scanner.nextLine();
-		System.out.println("Give me a number B please:");
+		System.out.println("Give me a integer number B please:");
 		double numberB = scanner.nextInt();
 		double result = 0;
 		boolean undefinedCheck = false;
-		boolean boolResult = true;
+		boolean boolResult;
+		String operation;
+		boolean firstRun = true;
 		
 		do {
-			
+			scanner.reset();
 			boolResult = true;
-			System.out.println("Give me a operation please:");
-			scanner.nextLine();
-			String operation = scanner.nextLine();
+			
+			if (firstRun) {
+				System.out.println("Give me a operation please:");
+				scanner.nextLine();
+				firstRun = false;
+			}
+			operation = scanner.nextLine();
 			if (operation.equals("add")) {
 				AddOperation add = new AddOperation();
 				add.setA(numberA);
@@ -48,19 +55,19 @@ public class InteractiveCalculator {
 					divide.setA(numberA);
 					divide.setB(numberB);
 					result = divide.getResult();
-					
 				}
 			} else {
-				System.out.println("Did not understand operation");
-				System.out.println("Please enter exactly: add, subtract, divide, or multiply.");
+				System.out.println("Did not understand operation - Please enter exactly: add, subtract, divide, or multiply.");
 				boolResult = false;
 			}
 			
 		} while (boolResult == false);
 		
+		scanner.close();
+		
 		if (undefinedCheck == false) {
 			System.out.println("The result is");
-			if (numberA%numberB == 0) {
+			if (result%1 == 0) {
 				System.out.println((int)result);
 			} else {
 				System.out.println(result);

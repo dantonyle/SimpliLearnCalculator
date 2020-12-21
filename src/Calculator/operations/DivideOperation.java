@@ -15,4 +15,6 @@ public class DivideOperation {
 	public double getResult() {
 		return this.a / this.b;
 	}
+	
+
 }
